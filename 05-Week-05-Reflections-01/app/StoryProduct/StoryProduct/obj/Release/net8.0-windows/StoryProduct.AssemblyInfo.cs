@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StoryProduct")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f0bc9b53b48e79d0a100d3d5a38e5e9145647c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2fff96d2717f7b1c14671afa607f4af0c28e503")]
 [assembly: System.Reflection.AssemblyProductAttribute("StoryProduct")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StoryProduct")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

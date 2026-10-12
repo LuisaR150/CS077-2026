@@ -19,3 +19,11 @@ C:\Users\blubb\source\repos\ScreenShot\ScreenShot\bin\Debug\System.Drawing.Commo
 C:\Users\blubb\source\repos\ScreenShot\ScreenShot\obj\Debug\ScreenShot.csproj.Up2Date
 C:\Users\blubb\source\repos\ScreenShot\ScreenShot\bin\Debug\Assets\cameraclick.mp3
 C:\Users\blubb\source\repos\ScreenShot\ScreenShot\obj\Debug\ScreenShot_Content.g.cs
+C:\Users\B217\source\repos\CS077-Fall-2026-Team\06-Week-06-Capture-Utility\ScreenShot\obj\Debug\ScreenShot.csproj.AssemblyReference.cache
+C:\Users\B217\source\repos\CS077-Fall-2026-Team\06-Week-06-Capture-Utility\ScreenShot\obj\Debug\MainWindow.g.cs
+C:\Users\B217\source\repos\CS077-Fall-2026-Team\06-Week-06-Capture-Utility\ScreenShot\obj\Debug\App.g.cs
+C:\Users\B217\source\repos\CS077-Fall-2026-Team\06-Week-06-Capture-Utility\ScreenShot\obj\Debug\ScreenShot_Content.g.cs
+C:\Users\B217\source\repos\CS077-Fall-2026-Team\06-Week-06-Capture-Utility\ScreenShot\obj\Debug\ScreenShot_MarkupCompile.cache
+C:\Users\B217\source\repos\CS077-Fall-2026-Team\06-Week-06-Capture-Utility\ScreenShot\obj\Debug\ScreenShot_MarkupCompile.lref
+C:\Users\B217\source\repos\CS077-Fall-2026-Team\06-Week-06-Capture-Utility\ScreenShot\obj\Debug\ScreenShot.exe
+C:\Users\B217\source\repos\CS077-Fall-2026-Team\06-Week-06-Capture-Utility\ScreenShot\obj\Debug\ScreenShot.pdb
