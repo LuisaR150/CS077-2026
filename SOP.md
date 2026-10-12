@@ -18,7 +18,8 @@ Standard Software Work Environment
 7. Communications: Discord - https://discord.com/
 8. Bloatware Removal: Bulk Crap Uninstaller - https://www.bcuninstaller.com/
 9. Graphical Presentation: Google Slides/MS PowerPoint; export via PDF
-10. Game Design Engine: Unity - https://unity.com/
+10. File archive compression: 7-zip - https://www.7-zip.org/
+11. Game Design Engine: Unity - https://unity.com/
 
 Pipeline
 1. Create Story/Purpose/Reason
