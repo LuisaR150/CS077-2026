@@ -216,20 +216,20 @@ public partial class MainWindow : Window
 
     private void OpenSelectedLink()
     {
-        if (lstLinks.SelectedItem is not string selectedLink) 
-        { 
-            txtStatus.Text = "Select a reference link first."; 
-            return; 
+        if (lstLinks.SelectedItem is not string selectedLink)
+        {
+            txtStatus.Text = "Select a reference link first.";
+            return;
         }
         try
         {
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(selectedLink) 
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(selectedLink)
             { UseShellExecute = true });
             txtStatus.Text = "Reference opened in your browser.";
         }
-        catch (Exception ex) 
-        { 
-            txtStatus.Text = "Could not open the browser: " + ex.Message; 
+        catch (Exception ex)
+        {
+            txtStatus.Text = "Could not open the browser: " + ex.Message;
         }
     }
 
@@ -238,6 +238,17 @@ public partial class MainWindow : Window
 
     private void SaveText(string text)
     {
+        // Rejects blank or whitespace-only notes before proceeding
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            txtStatus.Text = "Cannot export empty notes. Write something first.";
+            MessageBox.Show("Cannot export an empty note. Please enter some text first.",
+                            "Validation Error",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Warning);
+            return;
+        }
+
         var dialog = new SaveFileDialog { Filter = "Text files|*.txt", FileName = "music-record.txt" };
         if (dialog.ShowDialog() != true)
         {
