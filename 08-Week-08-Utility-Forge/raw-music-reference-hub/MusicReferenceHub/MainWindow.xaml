@@ -1,4 +1,4 @@
-<Window x:Class="MusicReferenceHub.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Music Reference Hub" Width="1120" Height="850" MinWidth="900" MinHeight="780" Background="#071820" Foreground="#EDF8FA">
+<Window x:Class="MusicReferenceHub.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Music Reference Hub" Width="1120" Height="850" MinWidth="900" MinHeight="780" Background="#071820" Foreground="#EDF8FA" MouseDown="Window_MouseDown">
 
     <!-- XAML builds the visible window. C# adds the actions. Keep x:Class matched to the namespace. -->
 

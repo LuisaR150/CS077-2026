@@ -22,6 +22,14 @@ public partial class MainWindow : Window
     private List<string> playlist = new();
     private int currentTrackIndex = -1;
 
+    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        if (!lstLinks.IsMouseOver)
+        {
+            lstLinks.SelectedItem = null;
+        }
+    }
+
     public MainWindow()
     {
         InitializeComponent();
@@ -208,14 +216,14 @@ public partial class MainWindow : Window
 
     private void OpenSelectedLink()
     {
-        if (lstLinks.SelectedItem is not string address) 
+        if (lstLinks.SelectedItem is not string selectedLink) 
         { 
             txtStatus.Text = "Select a reference link first."; 
             return; 
         }
         try
         {
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(address) 
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(selectedLink) 
             { UseShellExecute = true });
             txtStatus.Text = "Reference opened in your browser.";
         }
