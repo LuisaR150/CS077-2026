@@ -1,15 +1,19 @@
 Focused AI Assistance — Clear Link Selection
 
 Prompt used:
-I am building Music Reference Hub in C# WPF. My unknown is when I deselect a link and click Open Selected Link, it still opens the link again. Explain the smallest useful change, the exact file and method, and one test. Explain the variables and method calls involved. Do not rewrite my project. I will record what I kept, changed or rejected.
+I am building Music Reference Hub in C# WPF. My unknown is when I deselect a link and click Open Selected Link, it still opens the link
+again. Explain the smallest useful change, the exact file and method, and one test. Explain the variables and method calls involved. Do
+not rewrite my project. I will record what I kept, changed or rejected.
 
 Change:
-Added a Window_MouseDown event handler in MainWindow.xaml.cs to clear lstLinks.SelectedItem when clicking outside the links ListBox. Connected the event handler in MainWindow.xaml using MouseDown="Window_MouseDown".
+Added a Window_MouseDown event handler in MainWindow.xaml.cs to clear lstLinks.SelectedItem when clicking outside the links ListBox.
+Connected the event handler in MainWindow.xaml using MouseDown="Window_MouseDown".
 
 Decision: KEPT
 
 Reason:
-The change fixed the issue. Clicking outside the links box now clears the selection, preventing the previously selected URL from opening again.
+The change fixed the issue. Clicking outside the links box now clears the selection, preventing the previously selected URL from opening
+again.
 
 Test:
 Input/action: Select a URL, open it, click outside the links ListBox, then click Open Selected Link again.
