@@ -45,8 +45,7 @@ public partial class MainWindow : Window
     {
         var dialog = new OpenFileDialog
         {
-            Filter = "Audio|*.mp3;*.wav;*.wma|All files|*.*",
-            Multiselect = true // Allows selecting multiple files to play in order
+            Filter = "Audio|*.mp3;*.wav;*.wma|All files|*.*"
         };
 
         if (dialog.ShowDialog() != true)
@@ -55,10 +54,14 @@ public partial class MainWindow : Window
             return;
         }
 
-        playlist = dialog.FileNames.ToList();
-        currentTrackIndex = 0;
-        PlayTrack(currentTrackIndex);
+        mediaPlayer.Stop();
+        isPlaying = false;
+        mediaReady = false;
+        mediaPlayer.Source = new Uri(dialog.FileName);
+        txtNowPlaying.Text = Path.GetFileName(dialog.FileName);
+        txtStatus.Text = "Opening media. Wait for Ready before Play.";
     }
+
 
     private void PlayTrack(int index)
     {
@@ -111,13 +114,7 @@ public partial class MainWindow : Window
     private void Media_Opened(object sender, RoutedEventArgs e)
     {
         mediaReady = true;
-        if (mediaPlayer.NaturalDuration.HasTimeSpan)
-        {
-            progressSlider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
-        }
         txtStatus.Text = "Ready. Press Play.";
-        // Auto-play when opened
-        Play_Click(null, null);
     }
 
     private void Media_Failed(object sender, ExceptionRoutedEventArgs e)
@@ -211,13 +208,21 @@ public partial class MainWindow : Window
 
     private void OpenSelectedLink()
     {
-        if (lstLinks.SelectedItem is not string address) { txtStatus.Text = "Select a reference link first."; return; }
+        if (lstLinks.SelectedItem is not string address) 
+        { 
+            txtStatus.Text = "Select a reference link first."; 
+            return; 
+        }
         try
         {
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(address) { UseShellExecute = true });
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(address) 
+            { UseShellExecute = true });
             txtStatus.Text = "Reference opened in your browser.";
         }
-        catch (Exception ex) { txtStatus.Text = "Could not open the browser: " + ex.Message; }
+        catch (Exception ex) 
+        { 
+            txtStatus.Text = "Could not open the browser: " + ex.Message; 
+        }
     }
 
     private void AddLink_Click(object sender, RoutedEventArgs e) => AddLink();
@@ -226,25 +231,39 @@ public partial class MainWindow : Window
     private void SaveText(string text)
     {
         var dialog = new SaveFileDialog { Filter = "Text files|*.txt", FileName = "music-record.txt" };
-        if (dialog.ShowDialog() != true) { txtStatus.Text = "Save canceled."; return; }
+        if (dialog.ShowDialog() != true)
+        {
+            txtStatus.Text = "Save canceled. Your text stays here.";
+            return;
+        }
         try
         {
             File.WriteAllText(dialog.FileName, text);
             txtStatus.Text = "Saved: " + Path.GetFileName(dialog.FileName);
         }
-        catch (Exception ex) { txtStatus.Text = "Could not save: " + ex.Message; }
+        catch (Exception ex)
+        {
+            txtStatus.Text = "Could not save. Choose a writable folder: " + ex.Message;
+        }
     }
 
     private void Open_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new OpenFileDialog { Filter = "Text files|*.txt" };
-        if (dialog.ShowDialog() != true) { return; }
+        if (dialog.ShowDialog() != true)
+        {
+            txtStatus.Text = "Open canceled. Your current text stays here.";
+            return;
+        }
         try
         {
             txtNotes.Text = File.ReadAllText(dialog.FileName);
-            txtStatus.Text = "Text reopened.";
+            txtStatus.Text = "Text reopened. Review it before editing.";
         }
-        catch (Exception ex) { txtStatus.Text = "Could not read the file: " + ex.Message; }
+        catch (Exception ex)
+        {
+            txtStatus.Text = "Could not read the file: " + ex.Message;
+        }
     }
 
     private void Save_Click(object sender, RoutedEventArgs e) => SaveText(txtNotes.Text);
