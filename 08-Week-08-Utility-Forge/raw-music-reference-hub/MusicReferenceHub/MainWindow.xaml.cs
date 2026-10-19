@@ -271,11 +271,14 @@ public partial class MainWindow : Window
     private void Image_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new OpenFileDialog { Filter = "Images|*.png;*.jpg;*.jpeg" };
-        if (dialog.ShowDialog() != true) return;
-
+        if (dialog.ShowDialog() != true)
+        {
+            txtStatus.Text = "Image choice canceled. Your work stays here.";
+            return;
+        }
         try
         {
-            // Custom user image overwrites the UI display only, not the underlying metadata
+            // Load the image fully so its original file is not left locked.
             var bitmap = new System.Windows.Media.Imaging.BitmapImage();
             bitmap.BeginInit();
             bitmap.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
@@ -283,7 +286,7 @@ public partial class MainWindow : Window
             bitmap.EndInit();
             imgArtwork.Source = bitmap;
             imgButton.Source = bitmap;
-            txtStatus.Text = "Custom artwork loaded for current session.";
+            txtStatus.Text = "Artwork loaded. Check labels and contrast.";
         }
         catch (Exception ex)
         {

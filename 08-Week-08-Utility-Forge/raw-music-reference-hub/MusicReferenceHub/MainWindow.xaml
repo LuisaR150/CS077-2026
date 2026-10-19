@@ -56,7 +56,9 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Image x:Name="imgArtwork" Stretch="Uniform"/>
+                    <Image x:Name="imgArtwork"
+                           Source="Assets/music-artwork.png"
+                           Stretch="Uniform"/>
 
                     <!-- VISUAL HAT: this player opens a local file. Add behavior in C#. -->
 
@@ -128,8 +130,8 @@
 
                 <Button Click="Image_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image x:Name="imgButton" Width="28" Height="28" Margin="0,0,8,0"/>
-                        <TextBlock Text="Choose artwork" VerticalAlignment="Center"/>
+                        <Image x:Name="imgButton" Width="28" Height="28"/>
+                        <TextBlock Text="Choose artwork"/>
                     </StackPanel>
                 </Button>
 
