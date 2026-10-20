@@ -1,0 +1,68 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="lF3H0yG5fvS61eFaOEta">
+    <mxGraphModel dx="1406" dy="826" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9pnyFSmF09w37CFiACNV-3" edge="1" parent="1" source="9pnyFSmF09w37CFiACNV-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=gap;" target="9pnyFSmF09w37CFiACNV-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Start&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="40" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-5" edge="1" parent="1" source="9pnyFSmF09w37CFiACNV-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=gap;" target="9pnyFSmF09w37CFiACNV-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-2" parent="1" style="whiteSpace=wrap;html=1;" value="Open Task Board App" vertex="1">
+          <mxGeometry height="60" width="120" x="240" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-7" edge="1" parent="1" source="9pnyFSmF09w37CFiACNV-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=gap;" target="9pnyFSmF09w37CFiACNV-6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-4" parent="1" style="whiteSpace=wrap;html=1;" value="System Loads&amp;nbsp;&lt;div&gt;3 cloumns&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="440" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-9" edge="1" parent="1" source="9pnyFSmF09w37CFiACNV-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=gap;" target="9pnyFSmF09w37CFiACNV-8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-10" connectable="0" parent="9pnyFSmF09w37CFiACNV-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];defaultLabelBackgroundColor=gap;" value="Create" vertex="1">
+          <mxGeometry relative="1" x="-0.2" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-12" edge="1" parent="1" source="9pnyFSmF09w37CFiACNV-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=gap;" target="9pnyFSmF09w37CFiACNV-11" value="Exit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-17" edge="1" parent="1" source="9pnyFSmF09w37CFiACNV-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=gap;" target="9pnyFSmF09w37CFiACNV-16" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-6" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;User&lt;/div&gt;&lt;div&gt;Action&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="110" x="660" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-8" parent="1" style="whiteSpace=wrap;html=1;" value="Click &quot;+ New Task&quot;" vertex="1">
+          <mxGeometry height="60" width="120" x="655" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-14" edge="1" parent="1" source="9pnyFSmF09w37CFiACNV-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=gap;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="705" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-11" parent="1" style="whiteSpace=wrap;html=1;" value="Close Application" vertex="1">
+          <mxGeometry height="60" width="120" x="655" y="575" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-15" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;End&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="655" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-19" edge="1" parent="1" source="9pnyFSmF09w37CFiACNV-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=gap;" target="9pnyFSmF09w37CFiACNV-18" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-16" parent="1" style="whiteSpace=wrap;html=1;" value="Drag Task Card to Target Column" vertex="1">
+          <mxGeometry height="60" width="120" x="845" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="9pnyFSmF09w37CFiACNV-18" parent="1" style="whiteSpace=wrap;html=1;" value="Update Status&lt;div&gt;&amp;amp; Save&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1045" y="365" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
