@@ -1,0 +1,71 @@
+﻿<Window x:Class="RelayManifest.MainWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="Relay Manifest | File desk" Width="1000" Height="680"
+ MinWidth="780" MinHeight="540" Background="#071B25"
+ Foreground="#E5F3F1">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="14,9"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Background" Value="#B9E5E5"/>
+            <Setter Property="Foreground" Value="#09212B"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="#EBCBA6"
+   Foreground="#172D34" Padding="12,6">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open manifest..." Click="Open_Click"/>
+                <MenuItem Header="_Save visible summary..." Click="Save_Click"/>
+                <Separator/>
+                <MenuItem Header="E_xit" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="_All records" Click="All_Click"/>
+                <MenuItem Header="_High priority" Click="High_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Click="About_Click"/>
+            </MenuItem>
+        </Menu>
+        <Grid Margin="28">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="0,0,0,18">
+                <TextBlock Text="CLIENT JOB 9B / RELAY FILE DESK"
+       Foreground="#F3B37C" FontSize="13"/>
+                <TextBlock Text="Make the manifest readable."
+       FontSize="32" Margin="0,8,0,6"/>
+                <TextBlock Text="File > Open. Review warnings before sharing."/>
+            </StackPanel>
+            <ListView x:Name="lstItems" Grid.Row="1"
+     Background="#F1F6F4" Foreground="#152E39">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Item" Width="480"
+         DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Quantity" Width="120"
+         DisplayMemberBinding="{Binding Quantity}"/>
+                        <GridViewColumn Header="Priority" Width="160"
+         DisplayMemberBinding="{Binding Priority}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock x:Name="txtStatus" Grid.Row="2"
+     Text="Ready. Open a small training manifest."
+     Margin="0,16,0,12" Foreground="#F3B37C"/>
+            <TextBox x:Name="txtWarnings" Grid.Row="3" IsReadOnly="True"
+     TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+     Background="#102B36" Foreground="#F4DBBE"
+     Text="File warnings appear here." Padding="10"/>
+        </Grid>
+    </DockPanel>
+</Window>
