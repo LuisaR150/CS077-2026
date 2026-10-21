@@ -1,0 +1,23 @@
+CS077 WEEK 9 / 9A RECEIPT
+Learner: Kevin, Luisa, Pascual, Roman, Vinh
+Repository: https://github.com/saines007/CS077-Fall-2026-Team/tree/main/09-Week-09-First-Client-Jobs
+Generated: 2026-10-21T03:36:45.276Z
+Points: 10 (included in grade)
+Due: same class day; Canvas controls the official deadline.
+
+[DECLARED DONE] R1: Plan the client job
+Save a short client brief, a prototype image and your class whiteboard: user, need, actions, data and three-hat flow. Reuse lecture notes and a concise Discord peer check.
+
+[DECLARED DONE] R2: Build from a blank WPF project
+Create DispatchBoard yourself. Load online JSON or the supplied offline JSON, show rows, filter incomplete tasks and save the visible summary. Keep the project source, not just an EXE.
+
+[DECLARED DONE] R3: Test and explain
+Capture loaded rows, the filter and the saved summary. Record malformed JSON, an empty array, cancellation and network/offline behavior. Explain a class, a list, one condition, a method and await.
+
+[DECLARED DONE] R4: Check AI and data choices
+Save one focused AI question, its test and what you kept, changed or rejected. Use the supplied response if needed. Note why JSON fits today and how SQL, SQLite and MySQL differ.
+
+[DECLARED DONE] R5: Submit your handoff
+Commit and push the full project plus Evidence (brief, prototype, whiteboard, notes, peer check, tests, screenshots, AI record and receipt). Test instructor access. Submit the GitHub URL to Canvas Action 9A before today ends.
+
+This receipt records learner declarations only. It does not verify attendance, correctness or grading. Commit this receipt in Evidence, push and submit the GitHub URL in Canvas. 9A + 9B are the whole 25-point week; no third graded weekly submission.
