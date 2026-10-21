@@ -1,5 +1,5 @@
 CS077 WEEK 9 / 9B RECEIPT
-Learner: Kevin, Luisa, Pascual, Roman, Vinh
+Learner: Kevin, Luisa, Pascual, Vinh
 Repository: https://github.com/saines007/CS077-Fall-2026-Team/tree/main/09-Week-09-First-Client-Jobs/9B
 Generated: 2026-10-21T05:50:41.480Z
 Points: 15 (included in grade)
