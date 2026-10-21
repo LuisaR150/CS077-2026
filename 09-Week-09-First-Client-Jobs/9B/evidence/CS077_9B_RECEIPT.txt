@@ -1,0 +1,23 @@
+CS077 WEEK 9 / 9B RECEIPT
+Learner: Kevin, Luisa, Pascual, Roman, Vinh
+Repository: https://github.com/saines007/CS077-Fall-2026-Team/tree/main/09-Week-09-First-Client-Jobs/9B
+Generated: 2026-10-21T05:50:41.480Z
+Points: 15 (included in grade)
+Due: same class day; Canvas controls the official deadline.
+
+[DECLARED DONE] R1: Plan a different client job
+Save a short brief and prototype showing File, View and Help across the top. Whiteboard the valid-row and rejected-row branches. Keep class notes and a concise Discord peer check.
+
+[DECLARED DONE] R2: Build a second blank WPF project
+Create RelayManifest yourself. Open a text file, split and validate each row, show accepted records and line-number warnings, filter HIGH, and save a visible summary without changing the input.
+
+[DECLARED DONE] R3: Test and explain
+Capture the menu, accepted rows, rejected-line warnings and saved summary. Test a bad number, missing field, unknown priority, all-invalid file, cancel and no-data save. Explain array, loop, TryParse and return.
+
+[DECLARED DONE] R4: Check AI and the three hats
+Record a focused AI question, a test and your keep/change/reject decision (supplied-response fallback available). Explain one Visual, Logical and Data decision and when you would move from text to SQLite/MySQL.
+
+[DECLARED DONE] R5: Submit your second handoff
+Commit and push this project and its Evidence, including today's receipt. Test instructor access. Submit the GitHub URL to Canvas Action 9B before today ends. Keep 9A evidence; do not rewrite it.
+
+This receipt records learner declarations only. It does not verify attendance, correctness or grading. Commit this receipt in Evidence, push and submit the GitHub URL in Canvas. 9A + 9B are the whole 25-point week; no third graded weekly submission.
