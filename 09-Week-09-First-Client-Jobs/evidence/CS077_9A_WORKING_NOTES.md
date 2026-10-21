@@ -72,6 +72,29 @@ AI Question → Test → Kept/Changed/Rejected: We asked AI how to check for inv
 
 Peer Check: We asked a teammate to test the task board and check if its buttons and task list work correctly. We will use their feedback to fix problems and improve the app.
 
+DISPATCHBOARD - AI CHECK
+
+AI PROMPT: I am a beginner building DispatchBoard in C# WPF. Explain why malformed JSON or a missing title must be checked before replacing the current list. Show one tiny example using TaskData.Parse and one test. Name the file and method. Do not rewrite my app. I will explain and test your answer.
+
+AI RESPONSE:
+
+Why validate JSON before replacing the current list? We should check the JSON before replacing our current task list because malformed JSON or a missing title can cause errors or display incomplete information. If the new data fails validation, our app should keep the existing list instead of replacing it with invalid data.
+
+File and method: File: TaskData.cs Method: Parse(string json)
+
+This method converts JSON text into a list of DispatchTask objects and checks that the data is valid before returning the list.
+
+Tiny example: string json = "["; var tasks = TaskData.Parse(json);
+
+Expected result: This JSON is incomplete, so parsing should fail with a JsonException rather than return a valid task list.
+
+Test: Try loading this JSON, which is missing a title: [{"id": 1, "completed": false}]
+
+Expected result: TaskData.Parse should reject the data and show an error because the title is missing, leaving the existing task list unchanged.
+
+CONCLUSION: Our current Load_Click and Open_Click methods assign the new task list only after TaskData.Parse(json) succeeds. This helps protect the existing list when validation fails.
+
+
 ## submit
 Repository URL: We submitted our project to GitHub in the 09-Week-09-First-Client-Jobs folder. Our repository link is https://github.com/saines007/CS077-Fall-2026-Team/tree/main/09-Week-09-First-Client-Jobs.
 
