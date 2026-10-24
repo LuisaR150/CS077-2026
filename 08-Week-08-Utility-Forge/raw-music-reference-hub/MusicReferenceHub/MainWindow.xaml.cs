@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Microsoft.Win32;
 
@@ -13,39 +16,62 @@ namespace MusicReferenceHub;
 public partial class MainWindow : Window
 {
     private readonly System.Collections.ObjectModel.ObservableCollection<string> links = new();
+    private readonly System.Collections.ObjectModel.ObservableCollection<string> favoriteDisplayNames = new();
+
     private bool mediaReady = false;
     private bool isPlaying = false;
 
-    // Fields for playback tracking
-    private DispatcherTimer timer;
+    private readonly DispatcherTimer timer;
     private bool isDraggingSlider = false;
-    private List<string> playlist = new();
+    private readonly List<string> playlist = new();
     private int currentTrackIndex = -1;
 
-    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-    {
-        if (!lstLinks.IsMouseOver)
-        {
-            lstLinks.SelectedItem = null;
-        }
-    }
+    private BitmapImage? defaultKittyImage;
 
     public MainWindow()
     {
         InitializeComponent();
+        lstPlaylist.ItemsSource = favoriteDisplayNames;
         lstLinks.ItemsSource = links;
 
-        // Setup timer for progress slider
         timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(500) };
         timer.Tick += Timer_Tick;
+
+        LoadDefaultArtwork();
     }
 
-    private void Timer_Tick(object sender, EventArgs e)
+    private void LoadDefaultArtwork()
+    {
+        try
+        {
+            defaultKittyImage = new BitmapImage(new Uri("pack://application:,,,/Assets/Images/Hellokitty.jpg"));
+            imgArtwork.Source = defaultKittyImage;
+            imgButton.Source = defaultKittyImage;
+        }
+        catch (Exception)
+        {
+            // Fallback if local asset is missing
+        }
+    }
+
+    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        if (!lstPlaylist.IsMouseOver && !lstLinks.IsMouseOver)
+        {
+            lstPlaylist.SelectedItem = null;
+            lstLinks.SelectedItem = null;
+        }
+    }
+
+    private void Timer_Tick(object? sender, EventArgs e)
     {
         if (!isDraggingSlider && mediaPlayer.NaturalDuration.HasTimeSpan)
         {
             progressSlider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
             progressSlider.Value = mediaPlayer.Position.TotalSeconds;
+
+            lblCurrentTime.Text = mediaPlayer.Position.ToString(@"mm\:ss");
+            lblTotalTime.Text = mediaPlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss");
         }
     }
 
@@ -53,76 +79,124 @@ public partial class MainWindow : Window
     {
         var dialog = new OpenFileDialog
         {
-            Filter = "Audio|*.mp3;*.wav;*.wma|All files|*.*"
+            Filter = "Audio Files|*.mp3;*.wav;*.wma;*.m4a;*.aac|All files|*.*",
+            Multiselect = true
         };
 
-        if (dialog.ShowDialog() != true)
+        if (dialog.ShowDialog() != true || dialog.FileNames.Length == 0)
         {
-            txtStatus.Text = "Load canceled. Choose a file when ready.";
+            txtStatus.Text = "No songs added.";
             return;
         }
 
-        mediaPlayer.Stop();
-        isPlaying = false;
-        mediaReady = false;
-        mediaPlayer.Source = new Uri(dialog.FileName);
-        txtNowPlaying.Text = Path.GetFileName(dialog.FileName);
-        txtStatus.Text = "Opening media. Wait for Ready before Play.";
-    }
+        foreach (string file in dialog.FileNames)
+        {
+            if (!playlist.Contains(file))
+            {
+                playlist.Add(file);
+                favoriteDisplayNames.Add(Path.GetFileName(file));
+            }
+        }
 
+        if (currentTrackIndex == -1 && playlist.Count > 0)
+        {
+            PlayTrack(0);
+        }
+
+        txtStatus.Text = $"Added {dialog.FileNames.Length} track(s) ♡";
+    }
 
     private void PlayTrack(int index)
     {
         if (index < 0 || index >= playlist.Count) return;
 
+        currentTrackIndex = index;
         string filePath = playlist[index];
+
         mediaPlayer.Stop();
         isPlaying = false;
-        mediaReady = false;
+
+        // Directly mark media ready when initiating playback
+        mediaReady = true;
         mediaPlayer.Source = new Uri(filePath);
         txtNowPlaying.Text = Path.GetFileName(filePath);
-        txtStatus.Text = "Opening media. Wait for Ready before Play.";
+        txtStatus.Text = "Opening track...";
 
         ExtractMetadataArtwork(filePath);
+
+        mediaPlayer.Play();
+        timer.Start();
+        isPlaying = true;
+    }
+
+    private void LstPlaylist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (lstPlaylist.SelectedIndex >= 0 && lstPlaylist.SelectedIndex < playlist.Count)
+        {
+            PlayTrack(lstPlaylist.SelectedIndex);
+        }
+    }
+
+    private void ClearPlaylist_Click(object sender, RoutedEventArgs e)
+    {
+        mediaPlayer.Stop();
+        timer.Stop();
+        isPlaying = false;
+        mediaReady = false;
+        playlist.Clear();
+        favoriteDisplayNames.Clear();
+        currentTrackIndex = -1;
+        txtNowPlaying.Text = "No track playing ♡";
+        lblCurrentTime.Text = "00:00";
+        lblTotalTime.Text = "00:00";
+        progressSlider.Value = 0;
+
+        if (defaultKittyImage != null)
+        {
+            imgArtwork.Source = defaultKittyImage;
+        }
+
+        txtStatus.Text = "Playlist cleared.";
     }
 
     private void ExtractMetadataArtwork(string filePath)
     {
         try
         {
-            // Requires TagLibSharp NuGet Package
             var file = TagLib.File.Create(filePath);
             if (file.Tag.Pictures.Length > 0)
             {
                 var bin = (byte[])(file.Tag.Pictures[0].Data.Data);
-                using (var stream = new MemoryStream(bin))
-                {
-                    var bitmap = new System.Windows.Media.Imaging.BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
-                    bitmap.StreamSource = stream;
-                    bitmap.EndInit();
-                    imgArtwork.Source = bitmap;
-                    imgButton.Source = bitmap;
-                }
-            }
-            else
-            {
-                // Clear artwork if track has none
-                imgArtwork.Source = null;
-                imgButton.Source = null;
+                using var stream = new MemoryStream(bin);
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.StreamSource = stream;
+                bitmap.EndInit();
+
+                imgArtwork.Source = bitmap;
+                return;
             }
         }
         catch (Exception)
         {
-            txtStatus.Text = "Could not extract track artwork.";
+            // Fall back to default artwork if extraction fails
+        }
+
+        if (defaultKittyImage != null)
+        {
+            imgArtwork.Source = defaultKittyImage;
         }
     }
 
     private void Media_Opened(object sender, RoutedEventArgs e)
     {
         mediaReady = true;
-        txtStatus.Text = "Ready. Press Play.";
+        txtStatus.Text = "Playing favorite track ♡";
+        if (mediaPlayer.NaturalDuration.HasTimeSpan)
+        {
+            lblTotalTime.Text = mediaPlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss");
+        }
     }
 
     private void Media_Failed(object sender, ExceptionRoutedEventArgs e)
@@ -130,7 +204,7 @@ public partial class MainWindow : Window
         mediaReady = false;
         isPlaying = false;
         timer.Stop();
-        txtStatus.Text = "Media could not open. Try another local file or format.";
+        txtStatus.Text = "Unable to open audio file.";
     }
 
     private void Media_Ended(object sender, RoutedEventArgs e)
@@ -138,52 +212,87 @@ public partial class MainWindow : Window
         mediaPlayer.Stop();
         isPlaying = false;
 
-        if (playlist.Count > 0)
+        if (playlist.Count > 0 && currentTrackIndex + 1 < playlist.Count)
         {
-            currentTrackIndex++;
-
-            if (currentTrackIndex >= playlist.Count)
-            {
-                txtStatus.Text = "Playlist finished.";
-                timer.Stop();
-                return;
-            }
-            PlayTrack(currentTrackIndex);
+            PlayTrack(currentTrackIndex + 1);
+        }
+        else
+        {
+            txtStatus.Text = "End of playlist reached ♡";
+            timer.Stop();
         }
     }
 
     private void Play_Click(object sender, RoutedEventArgs e)
     {
-        if (!mediaReady) { txtStatus.Text = "Load a supported local file first."; return; }
+        if (!mediaReady && playlist.Count > 0)
+        {
+            PlayTrack(0);
+            return;
+        }
+
+        if (!mediaReady && mediaPlayer.Source == null)
+        {
+            txtStatus.Text = "Add favorite tracks first.";
+            return;
+        }
+
         mediaPlayer.Play();
         timer.Start();
         isPlaying = true;
-        txtStatus.Text = "Playing.";
+        txtStatus.Text = "Playing ♡";
     }
 
     private void Pause_Click(object sender, RoutedEventArgs e)
     {
-        if (!mediaReady) { txtStatus.Text = "Load a file first."; return; }
-        if (!isPlaying) { txtStatus.Text = "Playback is already paused or stopped."; return; }
-        mediaPlayer.Pause();
-        timer.Stop();
-        isPlaying = false;
-        txtStatus.Text = "Paused. Play continues from this point.";
+        if (!mediaReady && mediaPlayer.Source == null)
+        {
+            txtStatus.Text = "No track loaded.";
+            return;
+        }
+
+        if (isPlaying)
+        {
+            mediaPlayer.Pause();
+            timer.Stop();
+            isPlaying = false;
+            txtStatus.Text = "Paused ♡";
+        }
+        else
+        {
+            mediaPlayer.Play();
+            timer.Start();
+            isPlaying = true;
+            txtStatus.Text = "Playing ♡";
+        }
     }
 
     private void Stop_Click(object sender, RoutedEventArgs e)
     {
-        if (!mediaReady) { txtStatus.Text = "Load a file first."; return; }
+        if (!mediaReady && mediaPlayer.Source == null)
+        {
+            txtStatus.Text = "No track loaded.";
+            return;
+        }
+
         mediaPlayer.Stop();
         timer.Stop();
         progressSlider.Value = 0;
+        lblCurrentTime.Text = "00:00";
         isPlaying = false;
-        txtStatus.Text = "Stopped. Play starts from the beginning.";
+        txtStatus.Text = "Stopped ♡";
     }
 
     private void Load_Click(object sender, RoutedEventArgs e) => LoadLocalMedia();
 
-    // --- Slider Events ---
+    private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        if (mediaPlayer != null)
+        {
+            mediaPlayer.Volume = volumeSlider.Value;
+        }
+    }
+
     private void ProgressSlider_DragStarted(object sender, MouseButtonEventArgs e) => isDraggingSlider = true;
 
     private void ProgressSlider_DragCompleted(object sender, MouseButtonEventArgs e)
@@ -197,21 +306,101 @@ public partial class MainWindow : Window
         if (isDraggingSlider)
         {
             mediaPlayer.Position = TimeSpan.FromSeconds(progressSlider.Value);
+            lblCurrentTime.Text = TimeSpan.FromSeconds(progressSlider.Value).ToString(@"mm\:ss");
         }
     }
 
-    // --- Note & Link functions remain identical ---
-    private void AddLink()
+    private async Task ProcessYoutubeUrlAsync(string url)
     {
-        string address = txtLink.Text.Trim();
-        if (!Uri.TryCreate(address, UriKind.Absolute, out Uri? uri) || (uri.Scheme != "https" && uri.Scheme != "http"))
+        txtStatus.Text = "Downloading audio from YouTube... Please wait ♡";
+
+        string outputDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Downloads");
+        Directory.CreateDirectory(outputDirectory);
+
+        string ytDlpPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "yt-dlp.exe");
+
+        if (!File.Exists(ytDlpPath))
         {
-            txtStatus.Text = "Enter a complete https:// or http:// link.";
+            txtStatus.Text = "Error: yt-dlp.exe missing in output folder!";
+            MessageBox.Show("Please make sure yt-dlp.exe, ffmpeg.exe, and ffprobe.exe are placed in your app folder.",
+                            "Missing Executable", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
-        links.Add(uri.AbsoluteUri);
-        txtLink.Clear();
-        txtStatus.Text = "Reference added. Select it, then Open link.";
+
+        try
+        {
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = ytDlpPath,
+                Arguments = $"--no-playlist -x --audio-format mp3 --embed-thumbnail --embed-metadata -o \"{outputDirectory}/%(title)s.%(ext)s\" \"{url}\"",
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            using var process = Process.Start(startInfo);
+            if (process != null)
+            {
+                await process.WaitForExitAsync();
+
+                var dir = new DirectoryInfo(outputDirectory);
+                var latestFile = dir.GetFiles("*.mp3")
+                                    .OrderByDescending(f => f.LastWriteTime)
+                                    .FirstOrDefault();
+
+                if (latestFile != null && !playlist.Contains(latestFile.FullName))
+                {
+                    playlist.Add(latestFile.FullName);
+                    favoriteDisplayNames.Add(latestFile.Name);
+
+                    txtStatus.Text = "YouTube track added to playlist ♡";
+
+                    if (currentTrackIndex == -1)
+                    {
+                        PlayTrack(playlist.Count - 1);
+                    }
+                }
+                else
+                {
+                    txtStatus.Text = "Download completed, but MP3 was not found.";
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            txtStatus.Text = "YouTube download failed: " + ex.Message;
+        }
+    }
+
+    private async void AddLink_Click(object sender, RoutedEventArgs e)
+    {
+        string inputUrl = txtLink.Text.Trim();
+
+        if (string.IsNullOrWhiteSpace(inputUrl))
+        {
+            txtStatus.Text = "Paste a YouTube link first ♡";
+            return;
+        }
+
+        if (inputUrl.Contains("youtube.com") || inputUrl.Contains("youtu.be"))
+        {
+            txtLink.Clear();
+            await ProcessYoutubeUrlAsync(inputUrl);
+        }
+        else
+        {
+            if (Uri.TryCreate(inputUrl, UriKind.Absolute, out Uri? uri) && (uri.Scheme == "https" || uri.Scheme == "http"))
+            {
+                links.Add(uri.AbsoluteUri);
+                txtLink.Clear();
+                txtStatus.Text = "Reference link added ♡";
+            }
+            else
+            {
+                txtStatus.Text = "Please enter a valid link ♡";
+            }
+        }
     }
 
     private void OpenSelectedLink()
@@ -223,38 +412,29 @@ public partial class MainWindow : Window
         }
         try
         {
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(selectedLink)
-            { UseShellExecute = true });
-            txtStatus.Text = "Reference opened in your browser.";
+            Process.Start(new ProcessStartInfo(selectedLink) { UseShellExecute = true });
+            txtStatus.Text = "Opened link in browser.";
         }
         catch (Exception ex)
         {
-            txtStatus.Text = "Could not open the browser: " + ex.Message;
+            txtStatus.Text = "Could not open browser: " + ex.Message;
         }
     }
 
-    private void AddLink_Click(object sender, RoutedEventArgs e) => AddLink();
     private void OpenLink_Click(object sender, RoutedEventArgs e) => OpenSelectedLink();
 
     private void SaveText(string text)
     {
-        // Rejects blank or whitespace-only notes before proceeding
         if (string.IsNullOrWhiteSpace(text))
         {
-            txtStatus.Text = "Cannot export empty notes. Write something first.";
-            MessageBox.Show("Cannot export an empty note. Please enter some text first.",
-                            "Validation Error",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Warning);
+            txtStatus.Text = "Notes are empty.";
+            MessageBox.Show("Notes are empty. Write something first.", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
-        var dialog = new SaveFileDialog { Filter = "Text files|*.txt", FileName = "music-record.txt" };
-        if (dialog.ShowDialog() != true)
-        {
-            txtStatus.Text = "Save canceled. Your text stays here.";
-            return;
-        }
+        var dialog = new SaveFileDialog { Filter = "Text files|*.txt", FileName = "hello-kitty-notes.txt" };
+        if (dialog.ShowDialog() != true) return;
+
         try
         {
             File.WriteAllText(dialog.FileName, text);
@@ -262,26 +442,23 @@ public partial class MainWindow : Window
         }
         catch (Exception ex)
         {
-            txtStatus.Text = "Could not save. Choose a writable folder: " + ex.Message;
+            txtStatus.Text = "Could not save file: " + ex.Message;
         }
     }
 
     private void Open_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new OpenFileDialog { Filter = "Text files|*.txt" };
-        if (dialog.ShowDialog() != true)
-        {
-            txtStatus.Text = "Open canceled. Your current text stays here.";
-            return;
-        }
+        if (dialog.ShowDialog() != true) return;
+
         try
         {
             txtNotes.Text = File.ReadAllText(dialog.FileName);
-            txtStatus.Text = "Text reopened. Review it before editing.";
+            txtStatus.Text = "Notes loaded successfully ♡";
         }
         catch (Exception ex)
         {
-            txtStatus.Text = "Could not read the file: " + ex.Message;
+            txtStatus.Text = "Could not open file: " + ex.Message;
         }
     }
 
@@ -290,26 +467,24 @@ public partial class MainWindow : Window
     private void Image_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new OpenFileDialog { Filter = "Images|*.png;*.jpg;*.jpeg" };
-        if (dialog.ShowDialog() != true)
-        {
-            txtStatus.Text = "Image choice canceled. Your work stays here.";
-            return;
-        }
+        if (dialog.ShowDialog() != true) return;
+
         try
         {
-            // Load the image fully so its original file is not left locked.
-            var bitmap = new System.Windows.Media.Imaging.BitmapImage();
+            var bitmap = new BitmapImage();
             bitmap.BeginInit();
-            bitmap.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
             bitmap.UriSource = new Uri(dialog.FileName);
             bitmap.EndInit();
+
             imgArtwork.Source = bitmap;
             imgButton.Source = bitmap;
-            txtStatus.Text = "Artwork loaded. Check labels and contrast.";
+            defaultKittyImage = bitmap;
+            txtStatus.Text = "Custom artwork set ♡";
         }
         catch (Exception ex)
         {
-            txtStatus.Text = "Choose a valid PNG or JPG: " + ex.Message;
+            txtStatus.Text = "Could not load image: " + ex.Message;
         }
     }
 }
