@@ -1,0 +1,34 @@
+CS077 / ACTION 10B / THREE HELLO WORLD INVESTIGATIONS
+Receipt schema: cs077.action10b.v2
+Created: 2026-10-28T18:10:52.301Z
+Learner: Kevin, Luisa, Pascual, Roman, Vinh
+GitHub: https://github.com/saines007/CS077-Fall-2026-Team/tree/main/10-Week-10-Engine-Trials/Action-10B
+Tool: Unity
+Engine run result: I ran it and saw Hello World
+Due: October 28, 2026 at 12:35 PM Pacific
+Working arrangement: Group
+Lead: Kevin
+Members / contributions: Luisa - Worked on "Hello World" in visual studio for the console part of the requirement and XAML.
+Kevin - Collaborated with Vinh for White Board requirement.
+Pascual - Set up the GitHub repository and organized structure.
+Roman - Worked on the engine component of the engine.
+Vinh - Collaborated with Kevin for White Board requirement.
+Task | Owner | Status:
+WB      | Kevin    | Done
+WB      | Vinh     | Done
+GitHub  | Pascual  | Done
+Console | Luisa    | Done
+XAML    | Luisa    | Done
+Engine  | Roman    | Done
+Submit  | Everyone | Done
+
+DECLARED COMPLETE / R1 / Investigate the lecture and plan / 2 points
+DECLARED COMPLETE / R2 / Console Hello World / 3 points
+DECLARED COMPLETE / R3 / WPF / XAML Hello World / 3 points
+DECLARED COMPLETE / R4 / Game Engine Hello World attempt / 4 points
+DECLARED COMPLETE / R5 / GitHub package and receipt / 3 points
+
+Package: Console/ + WPF/ + EngineTrial/ + README + Evidence + this receipt.
+Save inside Evidence, commit, push and submit the GitHub URL to Canvas.
+Canvas: https://sbccd.instructure.com/courses/66799/assignments/1913573
+This receipt records learner declarations. It does not verify attendance, accuracy, instructor approval, Canvas submission or a grade.

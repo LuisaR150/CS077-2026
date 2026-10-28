@@ -1,0 +1,20 @@
+### 1. Class/object/callback connection
+
+- `Greeting` is a class; `new Greeting()` creates an object.
+- `greeting.Name = "Gateroller"` sets its property.
+- `BuildMessage()` returns `"Hello, Gateroller!"`.
+- Unity invokes `Start()` on the `HelloWorld` component, which calls `BuildMessage()` and sends the result to `Debug.Log()` for display in the Console.
+
+### 2. Small next test
+
+Change `"Gateroller"` to `"Ari"`, save, and press Play.
+
+Expected result: `Hello, Ari!`
+
+Record whether the result matches your expectation and what you keep, change, or reject.
+
+### 3. Official documentation
+
+- [Unity: Start](<https://docs.unity3d.com/6000.0/Documentation/ScriptReference/MonoBehaviour.Start.html?utm_source=chatgpt.com>)
+- [Unity: Debug.Log](<https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Debug.Log.html?utm_source=chatgpt.com>)
+- [Microsoft: C# classes and objects](<https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/classes?utm_source=chatgpt.com>)

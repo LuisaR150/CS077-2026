@@ -1,0 +1,25 @@
+CS077 / WEEK 10 / ACTION 10A / ENGINE TRIALS
+Learner: Roman, Luisa, Vinh, Pascual, Kevin
+GitHub: https://github.com/saines007/CS077-Fall-2026-Team/tree/main/10-Week-10-Engine-Trials
+Tool: Unity
+Test mode: My local run
+Generated: 2026-10-26T19:10:54.015Z
+10 points; included in grade. Due before class ends; Canvas is authoritative.
+
+[DECLARED DONE] R1: Recap on the whiteboard (2 points)
+With your group, trace last week: input → parse/validate → objects/list → display/filter → save. Label one class, variable, method and test. Keep the board photo and a short peer-check note.
+
+[DECLARED DONE] R2: Compare three tools (2 points)
+In README.md, give each tool’s category, C# support, setup need and official link. Choose one to test and explain why it fits your game idea or user. C# tools are recommended; another tool is allowed.
+
+[DECLARED DONE] R3: Test one small change (3 points)
+Open one engine/library example, identify its version, change one visible property and run or preview it. Save before/after evidence and a one-line expected → observed result. Keep your editable trial source; use the instructor-approved alternative if setup blocks you.
+
+[DECLARED DONE] R4: Explain the objects (2 points)
+Map one game object to a class/type, two data values and one method/action. Explain a component or inheritance relationship and where input → update → draw belongs. Save one AI question, an official-source check and your keep/change/reject decision; supplied-response fallback is available.
+
+[DECLARED DONE] R5: Push and submit the receipt (1 points)
+Save README.md, evidence, the editable trial source and downloaded 10A receipt in GitHub. Commit, push, test instructor access, then submit the GitHub repository URL to Canvas before class ends.
+
+This receipt records declarations, not verified attendance, correctness, submission or a grade. Save it in Evidence/, commit and push, then submit the GitHub URL to Canvas:
+https://sbccd.instructure.com/courses/66799/assignments/1912517
