@@ -1,0 +1,14 @@
+📁 Existing Shared GitHub Repository (main branch)
+ └── 📁 Your Unity Project Subfolder (e.g., Games/MyNewGame)
+      │
+      ├── 📁 Assets/             <-- Your scripts, scenes, and prefabs
+      │    └── (Binary Assets)   --> Managed by 📦 .gitattributes (Git LFS)
+      │
+      ├── 📁 Packages/           <-- Package manager manifests
+      ├── 📁 ProjectSettings/    <-- Editor and project configurations
+      │
+      ├── 🚫 .gitignore          <-- Excludes heavy build folders:
+      │                              - Library/, Temp/, UserSettings/, Obj/
+      │
+      └── 📦 .gitattributes      <-- Tracks large extensions via LFS:
+                                     - *.png, *.psd, *.fbx, *.obj, *.wav, etc.

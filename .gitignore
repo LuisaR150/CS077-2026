@@ -363,3 +363,12 @@ MigrationBackup/
 FodyWeavers.xsd
 /02-Week-02-Systems-Online/evidence/TeamProject/Properties/AssemblyInfo.cs
 /02-Week-02-Systems-Online/evidence/TeamProject/App.config
+11-Week-11-Classes-in-Unity/Action-11B/Engine Trial/Class11B_Vinh/Cat/Assets/Resources/BillingMode.json
+
+# Unity generated files
+**/Library/
+**/Obj/
+**/Build/
+**/Builds/
+**/Logs/
+**/UserSettings/
