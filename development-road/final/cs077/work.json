@@ -43,6 +43,14 @@
     },
     "evidence": {},
     "tasks": [],
-    "dailyNotes": []
+    "dailyNotes": [
+      {
+        "date": "2026-11-16",
+        "worked": "Brainstormed on adding new buttons, leader task board, and health. Worked on it on whiteboard.",
+        "next": "I will work on the GDD for Pilot Cat, update the readme and work on the code.",
+        "blocker": "Nothing at the moment.",
+        "evidence": "https://github.com/vnp3960/CS077-Gaterollers_Das-Finale"
+      }
+    ]
   }
 }
