@@ -25,9 +25,8 @@ public partial class MainWindow : Window
         bool identityConfirmed,
         bool sourceVerified)
     {
-        // ACTION 3B:
-        // 1. A conflicting timestamp returns HOLD.
-        // 2. Missing identity OR source verification returns REVIEW.
+        // 1. A conflicting timestamp returns HOLD regardless of other inputs.
+        // 2. Missing identity OR missing source verification returns REVIEW.
         // 3. No conflict, confirmed identity, and verified source returns CLEAR.
         if (timestampConflict)
         {
@@ -41,27 +40,21 @@ public partial class MainWindow : Window
         {
             return "CLEAR";
         }
-    } // <--- Added missing closing brace for EvaluateContract
+    }
 
     private static string ExplainVerdict(string verdict)
     {
-        // Customize these consequences for your runner. This function returns text.
         if (verdict == "HOLD")
         {
-            return "Your runner holds the contract and investigates the conflicting timestamps.";
+            return "HOLD: Jane locks down the medical dispatch and conserves scarce power while investigating the conflicting Martian relay timestamps.";
         }
         else if (verdict == "CLEAR")
         {
-            return "Your runner sends the checked record to Captain Vale. The checks agree; they do not establish guilt.";
+            return "CLEAR: Jane transmits the verified warrant to Captain Vale and deploys medical aid to the Dark Veil crew—while staying alert for creature ambushes. Passing checks does not establish Orra Quill's guilt.";
         }
         else
         {
-            return "Your runner asks for another verified source before moving the contract.";
+            return "REVIEW: Signal isolation on Mars leaves identity or source unverified. Jane requests a secondary beacon confirmation before risking supplies.";
         }
     }
-
-    private void StartButton_click(object sender, RoutedEventArgs e)
-    {
-
-    }
-} // <--- Removed extra closing brace
+}

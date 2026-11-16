@@ -1,8 +1,7 @@
-
 <Window x:Class="CS077.ContractVerification.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="VOID RUNNERS — Contract Verification"
+        Title="VOID RUNNERS — Contract Verification (Jane // Ashwake)"
         Width="1060" Height="760" MinWidth="760" MinHeight="560"
         Background="#071015" Foreground="#EEF9FC">
     <Window.Resources>
@@ -22,9 +21,9 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock Foreground="#61DDF4" FontSize="12" Text="CS077 // VOID RUNNERS // CONTRACT RELAY" />
-                <TextBlock x:Name="MissionTitle" Margin="0,10,0,8" FontSize="32" Text="Your mission: verify the warrant" />
-                <TextBlock Foreground="#B9CBD1" FontSize="15" Text="Replace the story and reference art with your original runner. Then make every evidence state produce a traceable verdict." />
+                <TextBlock Foreground="#61DDF4" FontSize="12" Text="CS077 // VOID RUNNERS // ASHWAKE RECORDS // MARS — THE OSSUARY BELT" />
+                <TextBlock x:Name="MissionTitle" Margin="0,10,0,8" FontSize="32" Text="Verify the Dark Veil Medical Rescue Warrant" />
+                <TextBlock Foreground="#B9CBD1" FontSize="15" Text="Horror // Martian Wasteland — Verify every incoming distress and supply contract before deploying scarce medical aid." />
             </StackPanel>
             <Grid Grid.Row="1" Margin="0,24,0,0">
                 <Grid.ColumnDefinitions>
@@ -34,16 +33,16 @@
                 </Grid.ColumnDefinitions>
                 <Border Padding="20" BorderBrush="#24505B" BorderThickness="1" Background="#0A1A20">
                     <StackPanel>
-                        <Image x:Name="MissionImage" Source="Assets/mission-reference.png"
+                        <Image x:Name="MissionImage" Source="Assets/CS077-Mission-Reference.png"
                                Height="220" Stretch="UniformToFill"
-                               AutomationProperties.Name="Reference mission artwork. Replace with your runner illustration." />
-                        <TextBlock Margin="0,8,0,18" Foreground="#B9CBD1" FontSize="12" Text="Reference art — replace with your character or mission illustration." />
+                               AutomationProperties.Name="Portrait and mission illustration of Jane, Field Medic on Mars." />
+                        <TextBlock Margin="0,8,0,18" Foreground="#B9CBD1" FontSize="12" Text="Jane — Field Medic (Broken Reach medicine and seed courier)" />
                         <TextBlock x:Name="RunnerName" Foreground="#F1AC6C" FontSize="24" Text="Jane" />
-                        <TextBlock x:Name="RunnerRole" Margin="0,6,0,18" FontSize="14" Text="Your runner's role, strength, and limitation." />
+                        <TextBlock x:Name="RunnerRole" Margin="0,6,0,18" FontSize="14" Text="Role: Field Medic (Calm, Fast-Paced, Organized) | Strength: Repairs damaged equipment | Limitation: Replacement parts and power are scarce" />
                         <TextBlock Foreground="#61DDF4" Text="DISCOVERY" />
-                        <TextBlock x:Name="DiscoveryText" Margin="0,6,0,18" FontSize="15" Text="Write what your runner found and why someone needs this decision." />
+                        <TextBlock x:Name="DiscoveryText" Margin="0,6,0,18" FontSize="15" Text="In the scorching dirt and rock wasteland of Mars, Jane intercepts a warrant claiming the trapped Dark Veil crew needs urgent medical aid—yet the isolated sector makes incoming signals unreliable." />
                         <TextBlock Foreground="#61DDF4" Text="WHAT IS AT STAKE" />
-                        <TextBlock x:Name="StoryConsequence" Margin="0,6,0,0" FontSize="15" Text="Write the problem, your runner's response, and what changes after the evidence is checked." />
+                        <TextBlock x:Name="StoryConsequence" Margin="0,6,0,0" FontSize="15" Text="The injured Dark Veil crew depends on medical supplies and perimeter defense, but trusting a spoofed signal risks leading Jane into a creature ambush and losing their base." />
                     </StackPanel>
                 </Border>
                 <StackPanel Grid.Column="2">
@@ -65,7 +64,6 @@
                             <TextBlock Margin="0,18,0,0" Foreground="#B9CBD1" FontSize="12" Text="CLEAR means the record passed these checks. It does not establish Orra Quill's guilt." />
                         </StackPanel>
                     </Border>
-                    <Button x:Name="Start_btn" Content="Start" Height="89" Width="499" Click="StartButton_click" FontSize="48"/>
                 </StackPanel>
             </Grid>
         </Grid>
