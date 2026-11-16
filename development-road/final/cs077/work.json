@@ -4,15 +4,15 @@
   "name": "Luisa Ramirez",
   "work": {
     "project": "A story worth playing",
-    "path": "story",
+    "path": "arcade",
     "selected": [
       "save"
     ],
     "engine": "Unity / C#",
     "gitEvidence": ".",
-    "ai": "Gemini",
-    "aiVerify": "",
-    "notes": "",
+    "ai": "Claude, Gemini",
+    "aiVerify": ".",
+    "notes": "Pilot Cat\nTargeted users: General Audience, cat lovers",
     "plan": "",
     "availability": "",
     "service": "",
