@@ -1,0 +1,36 @@
+{
+  "schema": "final-road-work-v1",
+  "course": "CS077",
+  "name": "Luisa Ramirez",
+  "work": {
+    "project": "A story worth playing",
+    "path": "story",
+    "selected": [
+      "save"
+    ],
+    "engine": "Unity / C#",
+    "gitEvidence": "",
+    "ai": "",
+    "aiVerify": "",
+    "notes": "",
+    "plan": "",
+    "availability": "",
+    "service": "",
+    "role": "Developer",
+    "board": {
+      "nodes": [],
+      "edges": [],
+      "strokes": []
+    },
+    "huddle": {
+      "stage": 0,
+      "returned": false,
+      "goal": "",
+      "personal": "",
+      "questions": ""
+    },
+    "evidence": {},
+    "tasks": [],
+    "dailyNotes": []
+  }
+}
