@@ -121,11 +121,11 @@
       "strokes": []
     },
     "huddle": {
-      "stage": 1,
+      "stage": 2,
       "returned": true,
       "goal": "Pilot Cat",
-      "personal": "",
-      "questions": ""
+      "personal": "In my role I will update the GDD, the readme and help with coding.",
+      "questions": "None"
     },
     "evidence": {},
     "dailyDraft": {
