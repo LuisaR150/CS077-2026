@@ -130,10 +130,10 @@
     "evidence": {},
     "dailyDraft": {
       "meeting": "CS077-2026-11-18",
-      "worked": "fjfurufurufu frhfurhf",
-      "next": "",
-      "blocker": "",
-      "evidence": ""
+      "worked": "Set up the shared team Vercel workspace and connected our GitHub repository for automated deployments. Configured the project root directory to Evidence/Website and deployed the Pilot Cat: Skies of Settaria landing page to production. Verified that the site builds cleanly and is accessible via a live .vercel.app URL.",
+      "next": "Verify all live website links, gameplay screenshots, and download buttons on the production URL, and customize the .vercel.app domain slug if needed.",
+      "blocker": "None, deployment is live and automatic updates from main are working.",
+      "evidence": "https://pilot-cat.vercel.app/"
     },
     "requirements": [
       {
@@ -287,6 +287,22 @@
         "blocker": "Nothing at the moment.",
         "evidence": "https://github.com/vnp3960/CS077-Gaterollers_Das-Finale",
         "tasks": []
+      },
+      {
+        "date": "2026-11-18",
+        "revision": 1,
+        "worked": "Set up the shared team Vercel workspace and connected our GitHub repository for automated deployments. Configured the project root directory to Evidence/Website and deployed the Pilot Cat: Skies of Settaria landing page to production. Verified that the site builds cleanly and is accessible via a live .vercel.app URL.",
+        "next": "Verify all live website links, gameplay screenshots, and download buttons on the production URL, and customize the .vercel.app domain slug if needed.",
+        "blocker": "None, deployment is live and automatic updates from main are working.",
+        "evidence": "https://pilot-cat.vercel.app/",
+        "tasks": [
+          {
+            "title": "Project core/foundation",
+            "due": "2026-11-18T23:59",
+            "done": false,
+            "result": ""
+          }
+        ]
       }
     ]
   },
