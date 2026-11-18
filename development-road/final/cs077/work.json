@@ -33,8 +33,86 @@
     "supportMode": "team",
     "role": "Developer",
     "board": {
-      "nodes": [],
-      "edges": [],
+      "nodes": [
+        {
+          "id": "275aff90-6b35-4fad-b728-afbb4e32c209",
+          "kind": "box",
+          "x": 20,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Goal: working project",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "8bfe46e8-dff9-445a-949c-d33861ed5a42",
+          "kind": "box",
+          "x": 210,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Inputs: code + assets",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "c61d837d-01be-41c9-aef4-ae5f905f9be5",
+          "kind": "box",
+          "x": 400,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Build: core interaction",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "a8ea11a7-c709-4734-9c37-7f1644dc02ac",
+          "kind": "box",
+          "x": 590,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Test: expected behavior",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "c355e679-84ad-4b40-87f2-6a92299627d0",
+          "kind": "box",
+          "x": 780,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Deliver: source + evidence",
+          "owner": "",
+          "due": "",
+          "description": ""
+        }
+      ],
+      "edges": [
+        {
+          "from": "275aff90-6b35-4fad-b728-afbb4e32c209",
+          "to": "8bfe46e8-dff9-445a-949c-d33861ed5a42"
+        },
+        {
+          "from": "8bfe46e8-dff9-445a-949c-d33861ed5a42",
+          "to": "c61d837d-01be-41c9-aef4-ae5f905f9be5"
+        },
+        {
+          "from": "c61d837d-01be-41c9-aef4-ae5f905f9be5",
+          "to": "a8ea11a7-c709-4734-9c37-7f1644dc02ac"
+        },
+        {
+          "from": "a8ea11a7-c709-4734-9c37-7f1644dc02ac",
+          "to": "c355e679-84ad-4b40-87f2-6a92299627d0"
+        }
+      ],
       "strokes": []
     },
     "personalBoard": {
@@ -45,7 +123,7 @@
     "huddle": {
       "stage": 0,
       "returned": false,
-      "goal": "",
+      "goal": "Pilot Cat",
       "personal": "",
       "questions": ""
     },
@@ -143,7 +221,63 @@
         "evidence": "Run meaningful normal, boundary and failure tests. Show a defect the suite detects."
       }
     ],
-    "tasks": [],
+    "tasks": [
+      {
+        "id": "node-a8ea11a7-c709-4734-9c37-7f1644dc02ac",
+        "title": "Storyboard",
+        "owner": "Vinh Khang Nguyen Pham",
+        "due": "2026-11-18T23:59",
+        "done": false,
+        "result": "",
+        "description": "Understanding of the world's story",
+        "nodeId": "a8ea11a7-c709-4734-9c37-7f1644dc02ac",
+        "dependsOn": []
+      },
+      {
+        "id": "node-c355e679-84ad-4b40-87f2-6a92299627d0",
+        "title": "Repos and task management",
+        "owner": "Pascual Ramirez",
+        "due": "2026-11-18T23:59",
+        "done": false,
+        "result": "",
+        "description": "Repo organization and team task list off platform",
+        "nodeId": "c355e679-84ad-4b40-87f2-6a92299627d0",
+        "dependsOn": []
+      },
+      {
+        "id": "609b996b-d62c-47bd-8a88-a56e209e4b85",
+        "title": "Project core/foundation",
+        "owner": "Roman Calles",
+        "due": "2026-11-18T23:59",
+        "done": false,
+        "result": "",
+        "description": "basic game mechanics",
+        "nodeId": "",
+        "dependsOn": []
+      },
+      {
+        "id": "754c8ed2-a0b2-47c6-9eb6-abcc0448e707",
+        "title": "Project core/foundation",
+        "owner": "Luisa Ramirez",
+        "due": "2026-11-18T23:59",
+        "done": false,
+        "result": "",
+        "description": "basic game mechanics",
+        "nodeId": "",
+        "dependsOn": []
+      },
+      {
+        "id": "a99a6e50-742e-4b02-8737-c295d1377d27",
+        "title": "PR Media materials",
+        "owner": "Kevin F",
+        "due": "2026-12-18T23:59",
+        "done": false,
+        "result": "",
+        "description": "Have promotional items",
+        "nodeId": "",
+        "dependsOn": []
+      }
+    ],
     "dailyNotes": [
       {
         "date": "2026-11-16",
@@ -185,9 +319,148 @@
     ]
   },
   "sharedPlan": {
-    "goal": "",
-    "plan": "",
-    "tasks": []
+    "goal": "Pilot Cat",
+    "plan": "Building from previous pipeline for refinement",
+    "board": {
+      "nodes": [
+        {
+          "id": "275aff90-6b35-4fad-b728-afbb4e32c209",
+          "kind": "box",
+          "x": 20,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Goal: working project",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "8bfe46e8-dff9-445a-949c-d33861ed5a42",
+          "kind": "box",
+          "x": 210,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Inputs: code + assets",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "c61d837d-01be-41c9-aef4-ae5f905f9be5",
+          "kind": "box",
+          "x": 400,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Build: core interaction",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "a8ea11a7-c709-4734-9c37-7f1644dc02ac",
+          "kind": "box",
+          "x": 590,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Test: expected behavior",
+          "owner": "",
+          "due": "",
+          "description": ""
+        },
+        {
+          "id": "c355e679-84ad-4b40-87f2-6a92299627d0",
+          "kind": "box",
+          "x": 780,
+          "y": 170,
+          "w": 150,
+          "h": 70,
+          "text": "Deliver: source + evidence",
+          "owner": "",
+          "due": "",
+          "description": ""
+        }
+      ],
+      "edges": [
+        {
+          "from": "275aff90-6b35-4fad-b728-afbb4e32c209",
+          "to": "8bfe46e8-dff9-445a-949c-d33861ed5a42"
+        },
+        {
+          "from": "8bfe46e8-dff9-445a-949c-d33861ed5a42",
+          "to": "c61d837d-01be-41c9-aef4-ae5f905f9be5"
+        },
+        {
+          "from": "c61d837d-01be-41c9-aef4-ae5f905f9be5",
+          "to": "a8ea11a7-c709-4734-9c37-7f1644dc02ac"
+        },
+        {
+          "from": "a8ea11a7-c709-4734-9c37-7f1644dc02ac",
+          "to": "c355e679-84ad-4b40-87f2-6a92299627d0"
+        }
+      ],
+      "strokes": []
+    },
+    "tasks": [
+      {
+        "id": "node-a8ea11a7-c709-4734-9c37-7f1644dc02ac",
+        "title": "Storyboard",
+        "owner": "Vinh Khang Nguyen Pham",
+        "due": "2026-11-18T23:59",
+        "done": false,
+        "result": "",
+        "description": "Understanding of the world's story",
+        "nodeId": "a8ea11a7-c709-4734-9c37-7f1644dc02ac",
+        "dependsOn": []
+      },
+      {
+        "id": "node-c355e679-84ad-4b40-87f2-6a92299627d0",
+        "title": "Repos and task management",
+        "owner": "Pascual Ramirez",
+        "due": "2026-11-18T23:59",
+        "done": false,
+        "result": "",
+        "description": "Repo organization and team task list off platform",
+        "nodeId": "c355e679-84ad-4b40-87f2-6a92299627d0",
+        "dependsOn": []
+      },
+      {
+        "id": "609b996b-d62c-47bd-8a88-a56e209e4b85",
+        "title": "Project core/foundation",
+        "owner": "Roman Calles",
+        "due": "2026-11-18T23:59",
+        "done": false,
+        "result": "",
+        "description": "basic game mechanics",
+        "nodeId": "",
+        "dependsOn": []
+      },
+      {
+        "id": "754c8ed2-a0b2-47c6-9eb6-abcc0448e707",
+        "title": "Project core/foundation",
+        "owner": "Luisa Ramirez",
+        "due": "2026-11-18T23:59",
+        "done": false,
+        "result": "",
+        "description": "basic game mechanics",
+        "nodeId": "",
+        "dependsOn": []
+      },
+      {
+        "id": "a99a6e50-742e-4b02-8737-c295d1377d27",
+        "title": "PR Media materials",
+        "owner": "Kevin F",
+        "due": "2026-12-18T23:59",
+        "done": false,
+        "result": "",
+        "description": "Have promotional items",
+        "nodeId": "",
+        "dependsOn": []
+      }
+    ]
   },
   "completedReports": []
 }
